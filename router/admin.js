@@ -3,4 +3,9 @@ const router=require('express').Router();
 router.get('/add-product', adminController.addProductPage)
 router.post('/add-product', adminController.addProduct);
 router.get('/', adminController.homePage);
+// products page
+router.get('/products-page',adminController.productPage);
+router.get('/update-product/:id',adminController.updateProductPage);
+router.post('/update-product', adminController.updateProduct)
+router.post('/delete-product', adminController.deleteProduct)
 module.exports=router;
