@@ -22,6 +22,10 @@ image:{
 description:{
     type:sequelize.STRING(300),
     allowNull:true
+},
+discount:{
+    type:sequelize.DOUBLE,
+    allowNull:true,
 }
 })
 
