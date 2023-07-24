@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    /* border: 1px solid crimson; */
+    padding: 20px;
+    /* width: 80%; */
+}
+
+.form-body input{
+border: none;
+border-bottom: 2px solid crimson;
+width: 50%;
+outline: none;
+}
+.form-body{
+    width: 100%;
+}

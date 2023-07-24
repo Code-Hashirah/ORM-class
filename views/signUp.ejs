@@ -1,0 +1,36 @@
+<%- include('includes/header.ejs') %>
+
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <div class="form">
+      
+        <form action="/sign-up" method="post" class="form-body">
+            <h3>Registration form</h3>
+        <div>
+            <label for="email">Email</label> <br>
+            <input id="email" type="text" name="Email">
+        </div>
+        <div>
+            <label for="phone">Phone Number</label> <br>
+            <input id="phone" type="text" name="Phone">
+        </div>
+        <div>
+            <label for="password">Password</label> <br>
+            <input id="password" type="text" name="Password">
+        </div>
+        <div>
+            <label for="confirm_password">Confirm Passowrd</label> <br>
+            <input id="confirm_password" type="text" name="Confirm_password">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-success mx-5 my-5">Register</button>
+           <a href="/" class="btn btn-outline-danger mx-5 mx-5 my-5">Cancel</a>
+        </div>
+        </form>
+    </div>
+
+
+    <%- include('includes/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<%- include('includes/header.ejs') %>
+
+</head>
+<body>
+    <%- include('includes/navbar.ejs') %>
+    <div class="form">
+      
+        <form action="/sign-in" method="post" class="form-body">
+            <h3>Login</h3>
+        <div>
+            <label for="email">Email</label> <br>
+            <input id="email" type="email" name="Email">
+        </div>
+        
+        <div>
+            <label for="password">Password</label> <br>
+            <input id="password" type="password" name="Password">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-success mx-5 my-5">Login</button>
+           <a href="/" class="btn btn-outline-danger mx-5 mx-5 my-5">Cancel</a>
+        </div>
+        </form>
+    </div>
+
+
+    <%- include('includes/footer.ejs') %>
+</body>
+</html>
