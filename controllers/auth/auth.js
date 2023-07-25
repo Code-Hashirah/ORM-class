@@ -1,10 +1,19 @@
 const Users=require('../../model/user');
 const bcrypt=require('bcrypt');
+const {validationResult}=require('express-validator')
+// middlewares
 exports.signUpPage=(req,res)=>{
-    res.render('signUp.ejs', {title:"Sign Up "})
+    let errorMsg=req.flash('validationError');
+    res.render('signUp.ejs', {title:"Sign Up ", DisplayError:errorMsg})
 }
 
 exports.signUp=(req,res)=>{
+    let error=validationResult(req);
+    if(!error.isEmpty()){
+        req.flash('validationError', error.array())
+        console.log(error);
+        return res.redirect('/sign-up');
+    }
     const {Email,Phone,Password}=req.body;
     bcrypt.hash(Password,12).then(hashed=>{
         Users.create({

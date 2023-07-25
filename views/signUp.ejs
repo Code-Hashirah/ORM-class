@@ -3,8 +3,11 @@
 </head>
 <body>
     <%- include('includes/navbar.ejs') %>
+    <div>
+        <%= JSON.stringify(DisplayError) %> <br>
+       </div>
     <div class="form">
-      
+     
         <form action="/sign-up" method="post" class="form-body">
             <h3>Registration form</h3>
         <div>
