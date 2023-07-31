@@ -36,11 +36,13 @@ exports.signIn=(req,res)=>{
     Users.findOne({where:{
         email:Email
     }}).then(user=>{
-        bcrypt.compare(Password,user.password)
-    }).then(result=>{
-     if(!result){
-       return res.redirect('/sign-in')
-     }
-     res.redirect('/')
+        // console.log(user)
+    bcrypt.compare(Password, user.password).then(result=>{
+        console.log(result)
+        if(!result){
+        //    res.redirect('/sign-in')
+        }
+          res.redirect('/')
+    })
     })
 }

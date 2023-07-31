@@ -13,6 +13,12 @@
         <div>
             <label for="email">Email</label> <br>
             <input id="email" type="text" name="Email">
+            <%for(let Err of DisplayError){
+                if(Err.path=="Email"){ %>
+                <span class="text-danger"> <%= Err.msg %></span>
+           <%     }
+            }
+                %>
         </div>
         <div>
             <label for="phone">Phone Number</label> <br>
