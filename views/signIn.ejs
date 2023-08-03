@@ -4,7 +4,8 @@
 <body>
     <%- include('includes/navbar.ejs') %>
     <div class="form">
-      
+      <span> <%= JSON.stringify(errorMessage) %> </span> <br>
+ <span> <%= JSON.stringify(notFound) %> </span> <br>
         <form action="/sign-in" method="post" class="form-body">
             <h3>Login</h3>
         <div>

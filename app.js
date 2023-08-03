@@ -5,7 +5,9 @@ const sequelize=require('sequelize');
 const Sequelize=require('./database/connect')
 const session=require('express-session');
 const flash =require('connect-flash');
+const multer=require('multer');
 const productRoute=require('./router/admin')
+const Session=require('./model/sessions');
 const Products=require('./model/product')
 const Users=require('./model/user');
 const app=express();
@@ -18,6 +20,16 @@ app.use(session({
 }))
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+let Store=multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null, 'public/images')
+    },
+    filename:(req,file,cb)=>{
+        cb(null, Date.now()+ file.originalname)
+    }
+})
+app.use(multer({storage:Store}).single('image'))
 
 app.use(productRoute)
 

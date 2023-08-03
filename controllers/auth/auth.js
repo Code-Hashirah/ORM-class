@@ -28,21 +28,38 @@ exports.signUp=(req,res)=>{
 }
 
 exports.signInPage=(req,res)=>{
-    res.render('signIn.ejs', {title:"Login "})
+    let errorMsg=req.flash('validationError');
+    let loginErr=req.flash('loginErr')
+    res.render('signIn.ejs', {title:"Login",notFound:loginErr, errorMessage:errorMsg})
 }
 
 exports.signIn=(req,res)=>{
     const{Email,Password}=req.body;
+    let error=validationResult(req);
+    
+    if(!error.isEmpty()){
+        req.flash('validationError', error.array());
+        return res.redirect('/sign-in')
+    }
     Users.findOne({where:{
         email:Email
     }}).then(user=>{
         // console.log(user)
-    bcrypt.compare(Password, user.password).then(result=>{
-        console.log(result)
-        if(!result){
-        //    res.redirect('/sign-in')
+        if(!user){
+            req.flash('loginErr','Invalid email or password');
+            // return req.session.save(()=>{
+             return   res.redirect('/sign-in')
+            // })
         }
-          res.redirect('/')
-    })
+        // res.json("Valid Email");
+        bcrypt.compare(Password,user.password).then(authenticated=>{
+            console.log(authenticated)
+            if(!authenticated){
+                req.flash('loginErr','Invalid email or password');
+                return res.redirect('/sign-in');
+            }
+            res.json("User Validated");
+        })
+
     })
 }

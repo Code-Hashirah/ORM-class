@@ -4,7 +4,9 @@ exports.addProductPage=(req,res)=>{
    res.render('addProduct.ejs',{title:'Admin:: Add product'})
 }
 exports.addProduct=(req,res)=>{
-    const {Item,Price, Image, Description, Discount} = req.body;
+    const {Item,Price, Description, Discount} = req.body;
+    let Image="/images/"+ req.file.filename;
+    // let Image = path.join(req.file.destination, req.file.filename);
     Products.create({
         item:Item,
         price:Price,

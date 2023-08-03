@@ -24,7 +24,7 @@ router.post('/sign-up',[
 ],authController.signUp);
 router.get('/sign-in', authController.signInPage);
 router.post('/sign-in',[
-    check('Email').notEmpty().withMessage('Field cannot be blank').isEmail().withMessage('Invalid Eamil'),
+    check('Email').notEmpty().withMessage('Field cannot be blank').isEmail().withMessage('Invalid Email'),
     check('Password').notEmpty().withMessage('Field cannot be blank'),
 ],authController.signIn);
 module.exports=router;
