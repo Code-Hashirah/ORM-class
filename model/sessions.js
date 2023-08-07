@@ -6,6 +6,9 @@ const session = Sequelize.define('session', {
       type: sequelize.STRING,
       primaryKey: true,
     },
+    userId:{
+      type:sequelize.STRING
+    },
     data: {
       type: sequelize.TEXT,
     },

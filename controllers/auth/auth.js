@@ -1,4 +1,5 @@
 const Users=require('../../model/user');
+const session = require('../../model/sessions')
 const bcrypt=require('bcrypt');
 const {validationResult}=require('express-validator')
 // middlewares
@@ -58,8 +59,17 @@ exports.signIn=(req,res)=>{
                 req.flash('loginErr','Invalid email or password');
                 return res.redirect('/sign-in');
             }
-            res.json("User Validated");
+            req.session.isLoggedIn=true;
+            req.session.data=user;
+            req.session.save(()=>{
+                res.json("User Validated");
+            })
         })
 
+    })
+}
+exports.signOut=(req,res)=>{
+    req.session.destroy(()=>{
+        return res.redirect('/sign-out')
     })
 }
