@@ -20,7 +20,9 @@ exports.addProduct=(req,res)=>{
 
 exports.homePage=(req,res)=>{
     Products.findAll().then(products=>{
-        res.render('index.ejs',{title:'Home', Products:products})
+        let user=req.session.data;
+        res.render('index.ejs',{title:'Home', Products:products, Admin:user})
+        console.log(user);
     })
  
 }

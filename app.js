@@ -48,6 +48,7 @@ app.use(productRoute)
 
 // Session.sync({force:true})
 // Products.sync({alter:true})
+// Users.sync({alter:true})
 Sequelize.sync()
 .then(conn=>{
     app.listen(5000, ()=>{

@@ -20,7 +20,8 @@ exports.signUp=(req,res)=>{
         Users.create({
             email:Email,
             phone:Phone,
-            password:hashed
+            password:hashed,
+            role:"User"
         }).then(saved=>{
             res.redirect('/sign-in')
             // res.json("saved");
@@ -46,23 +47,29 @@ exports.signIn=(req,res)=>{
         email:Email
     }}).then(user=>{
         // console.log(user)
-        if(!user){
-            req.flash('loginErr','Invalid email or password');
-            // return req.session.save(()=>{
-             return   res.redirect('/sign-in')
-            // })
-        }
+        // if(!user){
+        //     req.flash('loginErr','Invalid email or password');
+        //     console.log("error")
+        //     return req.session.save(()=>{
+        //      return   res.redirect('/sign-in')
+        //     })
+        // }
         // res.json("Valid Email");
         bcrypt.compare(Password,user.password).then(authenticated=>{
             console.log(authenticated)
-            if(!authenticated){
-                req.flash('loginErr','Invalid email or password');
-                return res.redirect('/sign-in');
-            }
+            // if(!authenticated){
+           
+              
+            //  return  req.session.save(()=>{
+            //     req.flash('loginErr','Invalid email or password');
+            //     return res.redirect('/sign-in');
+            //    })
+            // }
             req.session.isLoggedIn=true;
             req.session.data=user;
             req.session.save(()=>{
-                res.json("User Validated");
+                // res.json("User Validated");
+             return   res.redirect('/')
             })
         })
 
