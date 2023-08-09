@@ -25,6 +25,8 @@ const Users=SequelizeDb.define("users", {
     password:{
         type:DataTypes.STRING(30),
         allowNull:false,
-    }
+    },
+    resetToken:DataTypes.STRING,
+    resetTokenExpiration:DataTypes.DATE
 })
 module.exports=Users;

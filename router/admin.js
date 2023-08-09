@@ -30,4 +30,12 @@ router.post('/sign-in',[
     check('Password').notEmpty().withMessage('Field cannot be blank'),
 ],authController.signIn);
 router.post('/sign-out',authController.signOut);
+// forgot password 
+router.get('/forgot-password',authController.forgotPasswordPage);
+router.post('/forgot-password',authController.forgotPassword);
+
+// retrieve password 
+router.get('/retrieve-password/:token', authController.retrievePasswordPage);
+
+
 module.exports=router;
